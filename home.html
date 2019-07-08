@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container pt-3 pb-3 card border-bottom">
+     {% for x in post %}
+        <div class="d-flex align-items-baseline bg-light">
+        <img class="rounded-circle p-2" src="{{ x.author.profile.image.url }}" alt='profile images'style="width:80px;height:80px;">
+        <h5><a class="nav-link" href="#">{{ x.author }}</a></h5>
+        <small class="ml-3">{{ x.date_posted|date:"F d, Y" }}</small>
+      </div>
+        <h4><a class="nav-link text-success" href="{% url 'detail' x.id %}">{{ x.title }}</a></h4>
+        <div class="pt-3">
+        <p class="ml-3">{{ x.content }}</p>
+      </div>
+      <hr>
+     
+      {% endfor %}
+ </div>
+	{% endblock content %}
